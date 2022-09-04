@@ -152,6 +152,15 @@ function addEmployee() {
     })
 }
 
+function viewDepartments() {
+  db.findAllDepartments()
+    .then(([rows]) => {
+      let departments = rows;
+      console.log("\n");
+      console.table(departments);
+    })
+    .then(() => loadQuestions());
+}
 
 function addDepartment() {
     prompt([
@@ -167,6 +176,49 @@ function addDepartment() {
           .then(() => loadQuestions())
       })
   }
+
+function addRole() {
+  db.findAllDepartments()
+    .then(([rows]) => {
+      let departments = rows;
+      const departmentChoices = departments.map(({ id, name }) => ({
+        name: name,
+        value: id
+      }));
+
+      prompt([
+        {
+          name: "title",
+          message: "What is the name of the role?"
+        },
+        {
+          name: "salary",
+          message: "What is the salary of the role?"
+        },
+        {
+          type: "list",
+          name: "department_id",
+          message: "Which department does the role belong to?",
+          choices: departmentChoices
+        }
+      ])
+        .then(role => {
+          db.createRole(role)
+            .then(() => console.log(`Added ${role.title} to the database`))
+            .then(() => loadQuestions())
+        })
+    })
+}
+
+function viewRoles() {
+  db.findAllRoles()
+    .then(([rows]) => {
+      let roles = rows;
+      console.log("\n");
+      console.table(roles);
+    })
+    .then(() => loadQuestions());
+}
 
 function quit() {
   console.log("Fin!");
