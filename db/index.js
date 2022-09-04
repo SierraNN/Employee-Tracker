@@ -1,7 +1,7 @@
-const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
-const db = require("./db");
+const db = require(".");
 require("console.table");
+const { prompt } = require("inquirer");
 
 function init() {
   const logoText = logo({ name: "Manager" }).render();
@@ -24,7 +24,6 @@ function loadQuestions() {
           name: "Add Employee",
           value: "ADD_EMPLOYEE"
         },
-
         {
           name: "View All Roles",
           value: "VIEW_ROLES"

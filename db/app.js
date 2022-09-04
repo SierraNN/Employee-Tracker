@@ -11,23 +11,10 @@ class DB {
     );
   }
 
-  findAllPossibleManagers(employeeId) {
-    return this.connection.promise().query(
-      "SELECT id, first_name, last_name FROM employee WHERE id != ?",
-      employeeId
-    );
-  }
-
   createEmployee(employee) {
     return this.connection.promise().query("INSERT INTO employee SET ?", employee);
   }
 
-  removeEmployee(employeeId) {
-    return this.connection.promise().query(
-      "DELETE FROM employee WHERE id = ?",
-      employeeId
-    );
-  }
 
   findAllRoles() {
     return this.connection.promise().query(
