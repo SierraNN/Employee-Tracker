@@ -1,11 +1,10 @@
 const logo = require("asciiart-logo");
 const db = require(".");
-require("console.table");
 const { prompt } = require("inquirer");
 
+init()
+
 function init() {
-  const logoText = logo({ name: "Manager" }).render();
-  console.log(logoText);
   loadQuestions();
 }
 
@@ -17,7 +16,7 @@ function loadQuestions() {
       message: "Select action below:",
       choices: [
         {
-          name: "View all Employees",
+          name: "View Employees",
           value: "VIEW_EMPLOYEES"
         },
         {
@@ -25,7 +24,7 @@ function loadQuestions() {
           value: "ADD_EMPLOYEE"
         },
         {
-          name: "View All Roles",
+          name: "View Roles",
           value: "VIEW_ROLES"
         },
         {
@@ -33,7 +32,7 @@ function loadQuestions() {
           value: "ADD_ROLE"
         },
         {
-          name: "View All Departments",
+          name: "View Departments",
           value: "VIEW_DEPARTMENTS"
         },
         {
@@ -188,16 +187,16 @@ function addRole() {
       prompt([
         {
           name: "title",
-          message: "What is the name of the role?"
+          message: "What is the role?"
         },
         {
           name: "salary",
-          message: "What is the salary of the role?"
+          message: "What is the salary?"
         },
         {
           type: "list",
           name: "department_id",
-          message: "Which department does the role belong to?",
+          message: "Which department is it in?",
           choices: departmentChoices
         }
       ])

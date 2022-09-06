@@ -25,4 +25,4 @@ INSERT INTO employee_db
 VALUES
     ('Sierra', 'Nutt', 3, NULL),
     ('Jeremy', 'Hoose', 7, 1),
-    ('Booker', 'Allen', 1, 2);
+    ('Booker', 'Ahri', 1, 2);
